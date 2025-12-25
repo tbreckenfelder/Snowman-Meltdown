@@ -17,21 +17,38 @@ def display_game_state(mistakes, secret_word, guessed_letters):
             display_word += letter + " "
         else:
             display_word += "_ "
-    print("Word: ", display_word)
+    print("Word: ", display_word.strip())
     print("\n")
 
 def play_game():
     secret_word = get_random_word()
-    guessed_letters = []
+    guessed_letters = set()
     mistakes = 0
+    max_mistakes = len(STAGES) - 1
+
     print("Welcome to Snowman Meltdown!")
+
     display_game_state(mistakes, secret_word, guessed_letters)
     print("Secret word selected: " + secret_word)  # for testing, later remove this line
 
-    # TODO: Build your game loop here.
-    # For now, simply prompt the user once:
-    guess = input("Guess a letter: ").lower()
-    print("You guessed:", guess)
+    while mistakes < max_mistakes:
+        display_game_state(mistakes, secret_word, guessed_letters)  # Zeige den aktuellen Zustand.
+
+        # Benutzer nach einem Buchstaben fragen
+        guess = input("Guess a letter: ").lower()
+
+        print("You guessed:", guess)
+
+
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter a valid single letter.")
+            continue
+        if guess in guessed_letters:
+            print("You've already guessed that letter. Try again!")
+            continue
+
+        guessed_letters.add(guess)
+
 
 
 if __name__ == "__main__":
