@@ -28,8 +28,6 @@ def play_game():
 
     print("Willkommen zu: Snowman Meltdown!")
 
-    display_game_state(mistakes, secret_word, guessed_letters)
-    print("Secret word gewählt: " + secret_word)  # for testing, later remove this line
 
     while mistakes <= max_mistakes:
         remaining_errors = max_mistakes - mistakes
