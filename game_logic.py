@@ -62,10 +62,11 @@ def play_game():
         print("Du hast die maximale Fehleranzahl erreicht.")
         print("==> Leider hast du den Schneemann nicht gerettet. <==")
 
-    replay = input("Möchtest du noch einmal spielen? (ja/nein): ").lower()
+    replay = input("Möchtest du noch einmal spielen? (j/n): ").lower()
     if replay == "j":
         play_game()
     else:
+        print("\n")
         print("Schade, wir sehen uns ein anderes Mal!")
 
 
